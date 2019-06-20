@@ -1,9 +1,33 @@
 import React from 'react';
 
-// eslint-disable-next-line react/prefer-stateless-function
 class SearchBar extends React.Component {
+  state = { term: '' };
+
+  onInputChange = evt => {
+    this.setState({ term: evt.target.value });
+  };
+
+  onFormSubmit = evt => {
+    evt.preventDefault();
+
+    //TODO: make sure to call callback from parent
+  };
+
   render() {
-    return <div>SearchBar</div>;
+    return (
+      <div className="search-bar ui segment">
+        <form onSubmit={this.onFormSubmit} className="ui form">
+          <div className="field">
+            <label>Video Search</label>
+            <input
+              type="text"
+              value={this.state.term}
+              onChange={this.onInputChange}
+            />
+          </div>
+        </form>
+      </div>
+    );
   }
 }
 
