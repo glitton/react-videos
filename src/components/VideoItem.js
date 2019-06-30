@@ -1,10 +1,12 @@
 import "./VideoItem.css";
 import React from "react";
-
-const VideoItem = ({ video }) => {
+// es6 destructuring of props instead of props.video
+// just video like {video}
+const VideoItem = ({ video, onVideoSelect }) => {
+  // console.log({ video });
   const { thumbnails, description, title } = video.snippet;
   return (
-    <div className="video-item item">
+    <div onClick={() => onVideoSelect(video)} className="video-item item">
       <img className="ui image" src={thumbnails.medium.url} alt={description} />
       <div className="content">
         <div className="header">{title}</div>
